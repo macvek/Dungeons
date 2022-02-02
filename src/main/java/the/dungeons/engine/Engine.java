@@ -143,7 +143,7 @@ public class Engine {
                 }
             }
             else {
-                actions += "(slay) You see a monster; you should slay it!";
+                actions += "(slay) You see a monster; you should slay it!\n";
             }
         }
         if (room.flags.end) {
