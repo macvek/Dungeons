@@ -3,9 +3,9 @@ package the.dungeons;
 public class GameMap {
     public final GameRoom startingRoom;
 
-    private boolean hasKey;
-    private boolean hasSlayedMonster;
-    private boolean hasDeliveredTrophy;
+    public boolean hasKey;
+    public boolean hasSlayedMonster;
+    public boolean hasDeliveredTrophy;
 
     public GameMap(GameRoom startingRoom) {
         this.startingRoom = startingRoom;

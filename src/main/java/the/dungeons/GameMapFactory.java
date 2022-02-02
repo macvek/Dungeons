@@ -22,7 +22,7 @@ public class GameMapFactory {
                 var tile = tiles[x];
 
                 GameRoomFlags flags = new GameRoomFlags();
-
+                boolean wall = false;
                 boolean starterFlag = false;
                 switch(tile) {
                     case 'W': flags.wizard = true; break;
@@ -33,10 +33,10 @@ public class GameMapFactory {
                     case 'E': flags.end = true; break;
                     case ' ': break;
                     default:
-                        flags.wall = true;
+                        wall = true;
                 }
 
-                if (!flags.wall) {
+                if (!wall) {
                     var gameRoom = new GameRoom(movesFrom(x, y, allRooms), flags);
                     allRooms[y][x] = gameRoom;
                     if (starterFlag) {

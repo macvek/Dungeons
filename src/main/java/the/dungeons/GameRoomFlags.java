@@ -6,5 +6,4 @@ public class GameRoomFlags {
     public boolean door;
     public boolean monster;
     public boolean end;
-    public boolean wall;
 }
