@@ -71,11 +71,11 @@ public class Engine {
             }
             else {
                 gameMap.hasSlayedMonster = true;
-                return "you slayed monster and obtain a trophy from it; seek wizard to give him a trophy";
+                return "You slayed monster and obtain a trophy from it; seek wizard to give him a trophy";
             }
         }
         else {
-            return "there is no monster to slay here";
+            return "There is no monster to slay here";
         }
     }
 
@@ -136,10 +136,10 @@ public class Engine {
         if (room.flags.monster) {
             if (gameMap.hasSlayedMonster) {
                 if (gameMap.hasDeliveredTrophy) {
-                    actions += "you see a slayed monster, you already delivered a trophy\n";
+                    actions += "You see a slayed monster, you already delivered a trophy\n";
                 }
                 else {
-                    actions += "you see a slayed monster, you carry a trophy from him, you should find wizard and hand it to him as a gift\n";
+                    actions += "You see a slayed monster, you carry a trophy from him, you should find wizard and hand it to him as a gift\n";
                 }
             }
             else {
@@ -148,10 +148,10 @@ public class Engine {
         }
         if (room.flags.end) {
             if (gameMap.hasDeliveredTrophy) {
-                actions += "(end) here is where your journey ends; you have slayed a monster and pleased wizard; you are a true hero";
+                actions += "(end) Here is where your journey ends; you have slayed a monster and pleased wizard; you are a true hero";
             }
             else {
-                actions += "here is where your journey ends, but you still need to slay monster and hand trophy to a wizard, good luck";
+                actions += "Here is where your journey ends, but you still need to slay monster and hand trophy to a wizard, good luck";
             }
         }
 

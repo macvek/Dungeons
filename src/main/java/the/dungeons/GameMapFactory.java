@@ -1,5 +1,6 @@
 package the.dungeons;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
@@ -37,7 +38,7 @@ public class GameMapFactory {
                 }
 
                 if (!wall) {
-                    var gameRoom = new GameRoom(movesFrom(x, y, allRooms), flags);
+                    var gameRoom = new GameRoom(pickIntro(), movesFrom(x, y, allRooms), flags);
                     allRooms[y][x] = gameRoom;
                     if (starterFlag) {
                         starter = gameRoom;
@@ -71,5 +72,19 @@ public class GameMapFactory {
 
             return allRooms[y][x];
         };
+    }
+
+    private static String pickIntro() {
+        String[] intros = new String[]{
+                "You see a dark room, it is scary here",
+                "Wind is blowing through hallway.. smell of magic is in the air",
+                "Water is dropping somewhere in the shadow, a small rat is eating his dinner",
+                "A little candle is hanging on the wall. What a beautiful room it is",
+                "A table and a chair is in the middle of the room",
+                "You see a tunnel",
+                "This room reminds you of your own room"
+        };
+
+        return intros[(int)(Math.random()*intros.length)];
     }
 }

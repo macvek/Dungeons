@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 public class GameRoom {
     public final EnumMap<GameMove, Supplier<GameRoom>> moves;
-    double randomNumber = Math.random();
     public final GameRoomFlags flags;
     private String intro;
     public String getIntro() {
@@ -15,8 +14,8 @@ public class GameRoom {
     }
 
 
-    public GameRoom(EnumMap<GameMove, Supplier<GameRoom>> moves, GameRoomFlags flags) {
-        intro = "Welcome to room "+randomNumber;
+    public GameRoom(String intro, EnumMap<GameMove, Supplier<GameRoom>> moves, GameRoomFlags flags) {
+        this.intro = intro;
         this.moves = moves;
         this.flags = flags;
     }
