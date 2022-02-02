@@ -22,3 +22,4 @@ It is a bonus task to figure out that there is no end game, either by missing wi
 
 Good luck.
 
+![Demo](demo.gif) 
