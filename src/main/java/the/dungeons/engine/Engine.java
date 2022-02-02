@@ -21,9 +21,76 @@ public class Engine {
             case "s": return move(GameMove.South);
             case "e": return move(GameMove.East);
             case "n": return move(GameMove.North);
+            case "open": return open();
+            case "give trophy": return giveTrophy();
+            case "slay": return slay();
+            case "end": return end();
 
             default:
                 return "I cannot understand:"+cmd;
+        }
+    }
+
+    private String open() {
+        if (room.flags.chest) {
+            if (gameMap.hasKey) {
+                return "you already have opened a chest";
+            }
+            else {
+                gameMap.hasKey = true;
+                return "you open a chest and pick up a key";
+            }
+        }
+        else {
+            return "there is nothing to open here";
+        }
+    }
+
+    private String giveTrophy() {
+        if (room.flags.wizard) {
+            if (gameMap.hasDeliveredTrophy) {
+                return "you already delivered trophy to wizard";
+            }
+            else if (gameMap.hasSlayedMonster) {
+                gameMap.hasDeliveredTrophy = true;
+                return "You deliver trophy to wizard; he tells you that you can now seek for an exit from dungeon";
+            }
+            else {
+                return "You have no trophy to give; seek for a monster and slay him";
+            }
+        }
+        else {
+            return "there is no wizard here";
+        }
+    }
+
+    private String slay() {
+        if (room.flags.monster) {
+            if (gameMap.hasSlayedMonster) {
+                return "You already slayed monster";
+            }
+            else {
+                gameMap.hasSlayedMonster = true;
+                return "you slayed monster and obtain a trophy from it; seek wizard to give him a trophy";
+            }
+        }
+        else {
+            return "there is no monster to slay here";
+        }
+    }
+
+    private String end() {
+        if (room.flags.end) {
+            if (gameMap.hasDeliveredTrophy) {
+                gameOver = true;
+                return "Your journey ends here. Dungeons are free from monster now; you feel good to see sun again";
+            }
+            else {
+                return "The door is shut; you must please Wizard by handing him a trophy, to have it opened";
+            }
+        }
+        else {
+            return "There is no exit here";
         }
     }
 
@@ -33,6 +100,9 @@ public class Engine {
             return "You cannot move there";
         }
         else {
+            if (nextRoom.flags.door && !gameMap.hasKey) {
+                return "You face a closed door, you cannot get there; seek for a key in the chest";
+            }
             room = nextRoom;
             return describeRoom();
         }
